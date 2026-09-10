@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indeed Clone - Homepage</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    /* Custom Styling to match Indeed */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #2d2d2d;
+    }
+
+    /* Navbar */
+    .nav-link {
+      color: #2d2d2d;
+      font-weight: 500;
+      padding-bottom: 12px;
+    }
+
+    .nav-link.active {
+      color: #2d2d2d;
+      border-bottom: 2px solid #2557a7;
+    }
+
+    .nav-link:hover {
+      color: #2557a7;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #2557a7;
+      text-decoration: none;
+      letter-spacing: -1px;
+    }
+
+    /* Search Bar */
+    .search-box {
+      border: 1px solid #767676;
+      border-radius: 30px;
+      padding: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .search-input-group {
+      border: none;
+    }
+
+    .search-input-group input {
+      border: none;
+      box-shadow: none !important;
+      font-size: 0.95rem;
+    }
+
+    .divider {
+      width: 1px;
+      background-color: #d4d2d0;
+      margin: 6px 0;
+    }
+
+    .btn-search {
+      background-color: #2557a7;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 8px 24px;
+    }
+
+    .btn-search:hover {
+      background-color: #12408c;
+      color: #fff;
+    }
+
+    /* Get Started Button */
+    .btn-get-started {
+      background-color: #2557a7;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 10px;
+      padding: 10px 24px;
+      font-size: 1rem;
+    }
+
+    .btn-get-started:hover {
+      background-color: #12408c;
+      color: #fff;
+    }
+
+    /* Brand Center Logo */
+    .center-logo {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #2557a7;
+      letter-spacing: -2px;
+    }
+  </style>
+</head>
+<body>
+
+  {% block content %}
+
+  {% endblock %}
+
+
+
+</body>
+</html>

@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Application
 
 # Register your models here.
-@admin.register(models.admin)
+@admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):
     list_display = ("job", "candidate", "status", "applied_at")
     list_filter = ("status", "applied_at")
