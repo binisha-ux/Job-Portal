@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from accounts.views import home 
+from accounts.views import home , sign_in
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name="jobportal.com")
+    path('', home, name="jobportal"),
+    path('sign in', sign_in, name="signin"),
 ]
