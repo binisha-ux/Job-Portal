@@ -16,14 +16,14 @@ def sign_up(request):
 
         if User.objects.filter(username=email).exists():
             messages.info(request, "Email already existed. ")
-            return redirect("sign_up")
+            return redirect("signup")
 
         user = User.objects.create_user(username=email, email=email, password=password)
-        login(request, user)
+        login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         messages.success(request, "user created successfully. ")
         return redirect("jobportal")
 
-    return render(request, "sign_up.html")
+    return render(request, "signup.html")
 
 
 
