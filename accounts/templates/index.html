@@ -17,7 +17,7 @@
 
         <!-- Right Side: Sign in & Employer Options -->
         <div class="d-flex align-items-center gap-3">
-          <a href="#" class="text-primary fw-bold text-decoration-none">Sign in</a>
+          <a href="{% url 'signin' %}" class="text-primary fw-bold text-decoration-none">Sign in</a>
           <span class="text-muted small">|</span>
           <span class="text-muted small">us <span class="fw-bold text-dark">En</span></span>
           <span class="text-muted small">|</span>
@@ -71,7 +71,7 @@
         Create an account or sign in to see your personalized job recommendations.
       </p>
 
-      <a href="#" class="btn btn-get-started d-inline-flex align-items-center gap-2 text-decoration-none">
+      <a href="{% url 'signin' %}" class="btn btn-get-started d-inline-flex align-items-center gap-2 text-decoration-none">
         Get Started <i class="bi bi-arrow-right"></i>
       </a>
     </div>

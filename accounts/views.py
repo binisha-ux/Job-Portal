@@ -15,13 +15,17 @@ def check_email_view(request):
         data = request.POST
 
         email = data.get('email')
+        password = data.get('password')
 
         user_exists = User.objects.filter(email=email).exists()
-        if user_exists:
-            return redirect("signin.html")
-            messages.info(request, "User already exists")
+        if user_exists is not None:
+            return redirect("login")
 
         else:
-            return render(request, "")
+            messages.info(request, "User already exists")
+            return redirect("signin")
 
     return render(request, "index.html")
+
+def login_view(request):
+    return render(request, "login.html")
