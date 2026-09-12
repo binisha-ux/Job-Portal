@@ -40,7 +40,7 @@ def sign_in(request):
 
         if user is not None:
             login(request, user)
-            return redirect("login")
+            return redirect("feeds")
 
         else:
             messages.info(request, "Invalid email or password")
