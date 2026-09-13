@@ -9,6 +9,19 @@
 </head>
 <body class="bg-light">
 
+    {% if messages %}
+    <div class="w-100 mb-3" style="max-width: 520px;">
+      {% for message in messages %}
+        <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+
+
     <div class="container py-4">
         <h1 class="text-center mb-4">Employer Job Portal</h1>
 
@@ -22,6 +35,8 @@
                         <h3 class="card-title text-primary mb-3">Post a New Job</h3>
                         
                         <form action="#" method="POST">
+
+                            {% csrf_token %}
 
                             <div class="mb-3">
                                 <label for="jobTitle" class="form-label fw-bold">Job Title*</label>
@@ -72,48 +87,35 @@
                         
                         <!-- Scrollable container for job cards -->
                         <div style="max-height: 75vh; overflow-y: auto;">
+
+                            {% for job in jobs %}
                             
-                            <!-- Sample Posted Job Card 1 -->
                             <div class="card mb-3 border-start border-primary border-4 shadow-sm">
                                 <div class="card-body">
-                                    <h5 class="card-title mb-1">Senior Django Developer</h5>
-                                    <h6 class="card-subtitle text-muted mb-2">Acme Innovations</h6>
+                                    <h5 class="card-title mb-1">{{job.title}}</h5>
+                                    <h6 class="card-subtitle text-muted mb-2">{{job.company_name}}</h6>
                                     
                                     <div class="mb-2">
-                                        <span class="badge bg-secondary">Full-Time</span>
-                                        <span class="badge bg-info text-dark">📍 Remote</span>
-                                        <span class="badge bg-success">💰 $90,000 - $110,000</span>
+                                        <span class="badge bg-secondary">{{job.job_type}}</span>
+                                        <span class="badge bg-success">{{ job.salary }}</span>
                                     </div>
                                     
-                                    <p class="card-text text-secondary mb-3">Looking for an experienced backend developer proficient in Python, Django, REST APIs, and PostgreSQL database architecture.</p>
+                                    <p class="card-text text-secondary mb-3">{{ job.description }}</p>
                                     
                                     <div class="d-flex gap-2">
                                         <a href="#" class="btn btn-sm btn-warning fw-bold">Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger fw-bold">Delete</a>
+
+                                        <form action="{% url 'delete_job' job.id %}" method="POST">
+                                            {% csrf_token %}
+                                                <button type="submit" class="btn btn-danger btn-sm fw-bold">Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Sample Posted Job Card 2 -->
-                            <div class="card mb-3 border-start border-primary border-4 shadow-sm">
-                                <div class="card-body">
-                                    <h5 class="card-title mb-1">Frontend Engineer</h5>
-                                    <h6 class="card-subtitle text-muted mb-2">Creative Web Studio</h6>
-                                    
-                                    <div class="mb-2">
-                                        <span class="badge bg-secondary">Contract</span>
-                                        <span class="badge bg-info text-dark">📍 New York, NY</span>
-                                        <span class="badge bg-success">💰 $60 / hr</span>
-                                    </div>
-                                    
-                                    <p class="card-text text-secondary mb-3">Responsible for building clean, responsive user interfaces using Bootstrap 5, HTML5, and CSS3.</p>
-                                    
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="btn btn-sm btn-warning fw-bold">Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger fw-bold">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
+                            {% empty %}
+                                <p class="text-muted">No jobs posted yet.</p>
+                            {% endfor %}
 
                         </div>
                     </div>
