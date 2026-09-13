@@ -11,13 +11,23 @@ def create_job(request):
     if request.method == "POST":
         data = request.POST
 
-        title = data.get('title')
+        job_title = data.get('job_title')
         location = data.get('location')
         salary = data.get('salary')
         job_type = data.get('job_type')
         description = data.get('description')
 
-        
+        Job.objects.create(
+            title = job_title,
+            location = location, 
+            salary = salary,
+            job_type = job_type, 
+            description = description
+        )
+
+
+
+
 
         
     return render(request, "create_job.html")
