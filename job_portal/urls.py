@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from accounts.views import home , sign_in,  sign_up
 from accounts.views import employer_signup, employer_home, employer_signin
-
+from jobs.views import create_job
 
 
 urlpatterns = [
@@ -30,6 +30,8 @@ urlpatterns = [
     path('employer_signup/', employer_signup, name="employer_signup"),
     path('employer_home/', employer_home, name="employer_home"),
     path('employer_signin/', employer_signin, name="employer_signin"),
+    path('createjob/', create_job, name="create_job"),
+
 
     
     

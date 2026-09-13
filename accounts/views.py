@@ -88,7 +88,7 @@ def employer_signin(request):
         if user is not None:
             login(request, user)
             messages.info(request, "Logged in succesfully. ")
-            return redirect('jobportal')
+            return redirect('create_job')
         
         else:
             messages.info(request, "invalid credentials. ")

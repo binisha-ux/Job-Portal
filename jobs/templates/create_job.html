@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Job Portal</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="container py-4">
+        <h1 class="text-center mb-4">Employer Job Portal</h1>
+
+        <!-- Vertical Two-Column Grid -->
+        <div class="row g-4">
+            
+            <!-- LEFT COLUMN: Job Form -->
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary mb-3">Post a New Job</h3>
+                        
+                        <form action="#" method="POST">
+
+                            <div class="mb-3">
+                                <label for="jobTitle" class="form-label fw-bold">Job Title*</label>
+                                <input type="text" class="form-control" id="jobTitle" name="job_title" required placeholder="e.g. Software Engineer">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="companyName" class="form-label fw-bold">Company Name*</label>
+                                <input type="text" class="form-control" id="companyName" name="company_name" required placeholder="e.g. Tech Solutions Inc.">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="jobLocation" class="form-label fw-bold">Location*</label>
+                                    <input type="text" class="form-control" id="jobLocation" name="location" required placeholder="e.g. New York / Remote">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="jobSalary" class="form-label fw-bold">Salary*</label>
+                                    <input type="text" class="form-control" id="jobSalary" name="salary" required placeholder="e.g. $80,000 / yr">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="jobType" class="form-label fw-bold">Job Type</label>
+                                <select class="form-select" id="jobType" name="job_type">
+                                    <option value="Full-Time">Full-Time</option>
+                                    <option value="Part-Time">Part-Time</option>
+                                    <option value="Remote">Remote</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="jobDescription" class="form-label fw-bold">Job Description*</label>
+                                <textarea class="form-control" id="jobDescription" name="description" rows="4" required placeholder="Enter duties and requirements..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 fw-bold">Post Job</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Posted Jobs View -->
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-success mb-3">Posted Listings</h3>
+                        
+                        <!-- Scrollable container for job cards -->
+                        <div style="max-height: 75vh; overflow-y: auto;">
+                            
+                            <!-- Sample Posted Job Card 1 -->
+                            <div class="card mb-3 border-start border-primary border-4 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-1">Senior Django Developer</h5>
+                                    <h6 class="card-subtitle text-muted mb-2">Acme Innovations</h6>
+                                    
+                                    <div class="mb-2">
+                                        <span class="badge bg-secondary">Full-Time</span>
+                                        <span class="badge bg-info text-dark">📍 Remote</span>
+                                        <span class="badge bg-success">💰 $90,000 - $110,000</span>
+                                    </div>
+                                    
+                                    <p class="card-text text-secondary mb-3">Looking for an experienced backend developer proficient in Python, Django, REST APIs, and PostgreSQL database architecture.</p>
+                                    
+                                    <div class="d-flex gap-2">
+                                        <a href="#" class="btn btn-sm btn-warning fw-bold">Edit</a>
+                                        <a href="#" class="btn btn-sm btn-danger fw-bold">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sample Posted Job Card 2 -->
+                            <div class="card mb-3 border-start border-primary border-4 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-1">Frontend Engineer</h5>
+                                    <h6 class="card-subtitle text-muted mb-2">Creative Web Studio</h6>
+                                    
+                                    <div class="mb-2">
+                                        <span class="badge bg-secondary">Contract</span>
+                                        <span class="badge bg-info text-dark">📍 New York, NY</span>
+                                        <span class="badge bg-success">💰 $60 / hr</span>
+                                    </div>
+                                    
+                                    <p class="card-text text-secondary mb-3">Responsible for building clean, responsive user interfaces using Bootstrap 5, HTML5, and CSS3.</p>
+                                    
+                                    <div class="d-flex gap-2">
+                                        <a href="#" class="btn btn-sm btn-warning fw-bold">Edit</a>
+                                        <a href="#" class="btn btn-sm btn-danger fw-bold">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
