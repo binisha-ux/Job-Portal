@@ -48,22 +48,3 @@ def employer_signin(request):
     return render(request, "employer_signin.html")
 
 
-def employer_signin(request):
-    if request.method == "POST":
-        data = request.POST
-
-        email = data.get("email")
-        password = data.get("password")
-
-        user = authenticate(request, username=email, password=password)
-
-        if user is not None:
-            login(request, user)
-            messages.success(request, "logged in successfully. ")
-            return redirect('jobportal')
-
-        else:
-            messages.error(request, "invalid credentials. ")
-            return redirect('employer_signin')
-
-    return render(request, "employer_signin.html")

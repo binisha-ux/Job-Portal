@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from accounts.views import home , sign_in, login_view, sign_up
-from jobs.views import employer_signup, employer_home
+from jobs.views import employer_signup, employer_home, employer_signin
 
 
 
@@ -30,7 +30,8 @@ urlpatterns = [
     path('signup/', sign_up, name="signup"),
     path('employer_signup/', employer_signup, name="employer_signup"),
     path('employer_home/', employer_home, name="employer_home"),
-    
+    path('employer_signin/', employer_signin, name="employer_signin"),
+
     
     
 ]
