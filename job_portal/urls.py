@@ -16,8 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from accounts.views import home , sign_in, login_view, sign_up
-from jobs.views import employer_signup, employer_home, employer_signin
+from accounts.views import home , sign_in,  sign_up
+from accounts.views import employer_signup, employer_home, employer_signin
 
 
 
@@ -26,7 +26,6 @@ urlpatterns = [
     path('', home, name="jobportal"),
     path('sign in/', sign_in, name="signin"),
     path('accounts/', include('allauth.urls')),
-    path('login/', login_view, name="login"),
     path('signup/', sign_up, name="signup"),
     path('employer_signup/', employer_signup, name="employer_signup"),
     path('employer_home/', employer_home, name="employer_home"),

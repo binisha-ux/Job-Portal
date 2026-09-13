@@ -53,8 +53,6 @@ def sign_in(request):
 
 
 
-def login_view(request):
-    return render(request, "login.html")
 
 
 def employer_signup(request):
