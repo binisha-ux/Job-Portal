@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from accounts.views import home , sign_in,  sign_up
 from accounts.views import employer_signup, employer_home, employer_signin
-from jobs.views import create_job, delete_job
+from jobs.views import create_job, delete_job, update_job
 
 
 urlpatterns = [
@@ -32,6 +32,8 @@ urlpatterns = [
     path('employer_signin/', employer_signin, name="employer_signin"),
     path('createjob/', create_job, name="create_job"),
     path('deletejob/<int:job_id>/', delete_job, name="delete_job"),
+    path('updatejob/<int:job_id>/', update_job, name="update_job"),
+
 
 
     

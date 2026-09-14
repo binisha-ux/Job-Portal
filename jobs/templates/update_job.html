@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Job - Employer Job Portal</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-card {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+        }
+        .listing-card {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+        }
+        .listing-item {
+            border: 2.5px solid #0d6efd;
+            border-radius: 8px;
+            padding: 16px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container my-5">
+        <!-- Main Title -->
+        <h1 class="text-center mb-5 fw-normal fs-2">Employer Job Portal</h1>
+
+        <div class="row g-4">
+            <!-- Left Side: Update Job Form -->
+            <div class="col-lg-6">
+                <div class="form-card border">
+                    <h3 class="text-primary mb-4 fw-medium">Update Job</h3>
+                    
+                    <form action="{% url 'update_job' job.id %}" method="POST">
+
+                        {% csrf_token %}
+                        <!-- Job Title -->
+                        <div class="mb-3">
+                            <label for="jobTitle" class="form-label fw-semibold">Job Title*</label>
+                            <input type="text" class="form-control" id="jobTitle" value="{{ job.title }}" name="job_title" >
+                        </div>
+
+                        <!-- Company Name -->
+                        <div class="mb-3">
+                            <label for="companyName" class="form-label fw-semibold">Company Name*</label>
+                            <input type="text" class="form-control" id="companyName" value="{{ job.company_name }}" name="company_name" >
+                        </div>
+
+                        <!-- Location & Salary Row -->
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="location" class="form-label fw-semibold">Location*</label>
+                                <input type="text" class="form-control" id="location" value="{{ job.location }}" name="location" >
+                            </div>
+                            <div class="col-md-6">
+                                <label for="salary" class="form-label fw-semibold">Salary*</label>
+                                <input type="text" class="form-control" id="salary" value="{{ job.salary }}" name="salary" placeholder="e.g. $80,000 / yr">
+                            </div>
+                        </div>
+
+                        <!-- Job Type -->
+                        <div class="mb-3">
+                            <label for="jobType" class="form-label fw-semibold">Job Type</label>
+                            <select class="form-select" id="jobType" name="job_type">
+                                <option value="Part-Time" {% if job.job_type == "Part-Time" %} selected {% endif %}>Part-Time</option>
+                                <option value="Full-Time" {% if job.job_type == "Full-Time" %} selected {% endif %}>Full-Time</option>
+                                <option value="Remote" {% if job.job_type == Remote %} selected {% endif %}>Remote</option>
+                            </select>
+                        </div>
+
+                        <!-- Job Description -->
+                        <div class="mb-4">
+                            <label for="jobDescription" class="form-label fw-semibold">Job Description*</label>
+                            <textarea class="form-control" id="jobDescription" name="job_description" rows="4" required> {{job.description }} </textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary py-2 fw-semibold">Update Job</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.bundle.min.js"></script>
+</body>
+</html>

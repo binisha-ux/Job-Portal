@@ -103,12 +103,12 @@
                                     <p class="card-text text-secondary mb-3">{{ job.description }}</p>
                                     
                                     <div class="d-flex gap-2">
-                                        <a href="#" class="btn btn-sm btn-warning fw-bold">Edit</a>
 
-                                        <form action="{% url 'delete_job' job.id %}" method="POST">
+                                        <a href="{% url 'update_job' job.id %}" class="btn btn-warning btn-sm fw-bold">Edit</a>
+                                            <form action="{% url 'delete_job' job.id %}" method="POST">
                                             {% csrf_token %}
                                                 <button type="submit" class="btn btn-danger btn-sm fw-bold">Delete</button>
-                                        </form>
+                                            </form>
                                     </div>
                                 </div>
                             </div>
