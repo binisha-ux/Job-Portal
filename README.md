@@ -2,3 +2,7 @@
 A full-featured web application built with Django and PostgreSQL that connects job seekers with employers. Employers can post and manage job listings, review applicants, and track application statuses, while candidates can search for jobs, upload resumes, and manage their applications.
 
 
+## Recent Updates
+- Added full CRUD functionality for job postings (Create, Read, Update, Delete).
+- Integrated custom authentication and permission checks for employers.
+- Built responsive UI templates using Bootstrap 5.
