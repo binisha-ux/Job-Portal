@@ -50,6 +50,7 @@ def delete_job(request, job_id):
 
     return redirect("create_job")
 
+# Job views and handlers
 @login_required
 def update_job(request, job_id):
     job = get_object_or_404(Job, id=job_id, employer=request.user)
