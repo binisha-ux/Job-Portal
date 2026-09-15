@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.db.models import Q
+from jobs.models import Job
 # Create your views here.
 def home(request):
     context = {'page': 'Job Search | JobPortal'}
@@ -96,3 +98,21 @@ def employer_signin(request):
 
         
     return render(request, "employer_signin.html")
+
+def search_jobs(request):
+    query = request.GET.get('q', '').strip()
+    location = request.GET.get('location', '').strip()
+    
+    jobs = Job.objects.all()
+
+    if query:
+        jobs = jobs.filter(Q(title__icontains=query) | Q(company_name__icontains=query))
+
+    if location:
+        jobs = jobs.filter(location__icontains=location)
+
+    return render(request, "search_job.html", {
+        'jobs':jobs.distinct(),
+        'query':query,
+        'location':location
+    })

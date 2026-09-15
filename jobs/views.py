@@ -72,3 +72,4 @@ def update_job(request, job_id):
 
 
     return render(request, "update_job.html", {'job':job})
+

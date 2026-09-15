@@ -32,31 +32,36 @@
 
   <!-- Main Content Container -->
   <main class="container my-5">
-    
+    <form action="{% url 'search_jobs' %}" method="GET">
     <!-- Top Search Bar Section -->
-    <div class="search-box bg-white d-flex align-items-center mb-5">
+      <div class="search-box bg-white d-flex align-items-center mb-5">
       
       <!-- Input 1: Job Title / Keywords -->
-      <div class="input-group search-input-group px-2">
-        <span class="input-group-text bg-transparent border-0 pe-2">
-          <i class="bi bi-search text-dark fs-5"></i>
-        </span>
-        <input type="text" class="form-control" placeholder="Job title, keywords, or company">
-      </div>
+        <div class="input-group search-input-group px-2">
+          <span class="input-group-text bg-transparent border-0 pe-2">
+            <i class="bi bi-search text-dark fs-5"></i>
+          </span>
+            <input type="text" name="q" class="form-control" placeholder="Job title, keywords, or company" value="{{ query|default:'' }}">
+        </div>
 
       <!-- Vertical Divider -->
-      <div class="divider align-self-stretch"></div>
+        <div class="divider align-self-stretch"></div>
 
       <!-- Input 2: Location -->
-      <div class="input-group search-input-group px-2">
-        <span class="input-group-text bg-transparent border-0 pe-2">
-          <i class="bi bi-geo-alt text-dark fs-5"></i>
-        </span>
-        <input type="text" class="form-control" placeholder="Remote" value="Remote">
-      </div>
+        <div class="input-group search-input-group px-2">
+          <span class="input-group-text bg-transparent border-0 pe-2">
+            <i class="bi bi-geo-alt text-dark fs-5"></i>
+          </span>
+            <input type="text" name="location" class="form-control" placeholder="Remote" value="{{ location|default:'' }}">
+        </div>
 
       <!-- Search Button -->
-      <button class="btn btn-search text-nowrap ms-2" type="button">Search</button>
+        <button class="btn btn-search text-nowrap ms-2" type="submit">Search</button>
+      </div>
+    </form>
+
+    <div class="job-list">
+      
     </div>
 
     <!-- Center Hero Section -->
