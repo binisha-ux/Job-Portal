@@ -1,15 +1,18 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
-from jobs.models import Job
+from jobs.models import Job, UserProfile
 # Create your views here.
+
 def home(request):
     context = {'page': 'Job Search | JobPortal'}
     return render(request, "index.html", context)
 
 def sign_up(request):
+    
     if request.method == "POST":
         data = request.POST
 
@@ -42,7 +45,7 @@ def sign_in(request):
 
         if user is not None:
             login(request, user)
-            return redirect("feeds")
+            return redirect("feed")
 
         else:
             messages.info(request, "Invalid email or password")
@@ -116,3 +119,6 @@ def search_jobs(request):
         'query':query,
         'location':location
     })
+
+def feed(request):
+    return render(request, "feed.html")

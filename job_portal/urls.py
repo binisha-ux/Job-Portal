@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from accounts.views import home , sign_in,  sign_up
-from accounts.views import employer_signup, employer_home, employer_signin, search_jobs
+from accounts.views import employer_signup, employer_home, employer_signin, search_jobs, feed
 from jobs.views import create_job, delete_job, update_job
 
 
@@ -34,6 +34,8 @@ urlpatterns = [
     path('deletejob/<int:job_id>/', delete_job, name="delete_job"),
     path('updatejob/<int:job_id>/', update_job, name="update_job"),
     path('searchjobs/', search_jobs, name="search_jobs"),
+    path('feed/', feed, name="feed"),
+
 
 
 
