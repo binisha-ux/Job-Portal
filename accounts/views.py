@@ -12,7 +12,9 @@ def home(request):
     return render(request, "index.html", context)
 
 def sign_up(request):
-    
+    if request.user.is_authenticated:
+        return redirect("feed")
+
     if request.method == "POST":
         data = request.POST
 
@@ -31,10 +33,10 @@ def sign_up(request):
     return render(request, "signup.html")
 
 
-
-
-
 def sign_in(request):
+    if request.user.is_authenticated:
+        return redirect("feed")
+
     if request.method == "POST":
         data = request.POST
 
@@ -55,12 +57,10 @@ def sign_in(request):
     return render(request, "signin.html", context)
 
 
-
-
-
-
-
 def employer_signup(request):
+    if request.user.is_authenticated:
+        return redirect("employer_home")
+
     if request.method == "POST":
         data = request.POST
 
@@ -82,13 +82,16 @@ def employer_home(request):
 
 
 def employer_signin(request):
+    if request.user.is_authenticated:
+        return redirect("employer_home")
+
     if request.method == "POST":
         data = request.POST
         
         email = data.get('email')
         password = data.get('password')
 
-        user = authenticate(request, username=email, email=email, password=password)
+        user = authenticate(request, username=email, password=password)
 
         if user is not None:
             login(request, user)
@@ -120,5 +123,6 @@ def search_jobs(request):
         'location':location
     })
 
+@login_required(login_url='signup')
 def feed(request):
     return render(request, "feed.html")
