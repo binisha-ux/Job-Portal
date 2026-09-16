@@ -2,23 +2,21 @@
 
 {% block content %}
 
-        <div class="d-flex align-items-center gap-4">
-          <a href="{% url 'jobportal' %}" class="logo-text me-2">JobPortal</a>
-        </div>
-        <hr>
+<div class="d-flex align-items-center gap-4 px-3 pt-3">
+  <a href="{% url 'jobportal' %}" class="logo-text me-2 fw-bold text-decoration-none fs-4">JobPortal</a>
+</div>
+<hr class="mt-2 mb-4">
 
-
-        
-<main class="container my-5">
+<main class="container my-4">
 
   <!-- Search Form -->
   <form action="{% url 'search_jobs' %}" method="GET">
-    <div class="search-box bg-white d-flex align-items-center mb-4 border rounded-pill p-2 shadow-sm">
+    <div class="search-box bg-white d-flex align-items-center mb-5 border rounded-pill p-2 shadow-sm">
       
       <!-- Input 1: Keyword/Title -->
       <div class="input-group px-2">
         <span class="input-group-text bg-transparent border-0 pe-2">
-          <i class="bi bi-search text-dark fs-5"></i>
+          <i class="bi bi-search text-secondary fs-5"></i>
         </span>
         <input type="text" name="q" class="form-control border-0 shadow-none" placeholder="Job title, keywords, or company" value="{{ query|default:'' }}">
       </div>
@@ -29,27 +27,62 @@
       <!-- Input 2: Location -->
       <div class="input-group px-2">
         <span class="input-group-text bg-transparent border-0 pe-2">
-          <i class="bi bi-geo-alt text-dark fs-5"></i>
+          <i class="bi bi-geo-alt text-secondary fs-5"></i>
         </span>
         <input type="text" name="location" class="form-control border-0 shadow-none" placeholder="Location or Remote" value="{{ location|default:'' }}">
       </div>
 
       <!-- Submit Button -->
-      <button class="btn btn-primary rounded-pill px-4 ms-2" type="submit">Search</button>
+      <button class="btn btn-primary rounded-pill px-4 ms-2 fw-semibold" type="submit">Search</button>
     </div>
   </form>
 
   <!-- Job Results List -->
   <div class="job-list">
     {% for job in jobs %}
-      <div class="card mb-3 p-3 shadow-sm border-0">
-        <h3 class="h5 mb-1">{{ job.title }}</h3>
-        <p class="text-secondary mb-0">{{ job.company_name }} — {{ job.location }}</p>
+      <div class="card mb-3 border rounded-3 p-4 shadow-sm hover-shadow transition">
+        <div class="d-flex align-items-start gap-3">
+          
+          <!-- Numbering Badge -->
+          <span class="badge bg-primary text-white rounded-circle fs-6 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; flex-shrink: 0;">
+            {{ forloop.counter }}
+          </span>
+
+          <div class="flex-grow-1">
+            <!-- Job Title & Badges -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+              <h3 class="h5 mb-0 fw-bold text-dark">{{ job.title }}</h3>
+              {% if job.job_type %}
+                <span class="badge bg-light text-primary border border-primary-subtle rounded-pill px-3 py-2 fw-normal">
+                  {{ job.job_type }}
+                </span>
+              {% endif %}
+            </div>
+
+            <!-- Company, Location & Salary Metadata -->
+            <div class="d-flex align-items-center flex-wrap gap-3 text-secondary mb-3 small">
+              <span class="fw-semibold text-dark"><i class="bi bi-building me-1"></i>{{ job.company_name }}</span>
+              <span><i class="bi bi-geo-alt me-1"></i>{{ job.location }}</span>
+              {% if job.salary %}
+                <span class="text-success fw-semibold"><i class="bi bi-cash-stack me-1"></i>{{ job.salary }}</span>
+              {% endif %}
+            </div>
+
+            <!-- Job Description -->
+            {% if job.description %}
+              <p class="text-muted small mb-0 text-truncate" style="max-width: 900px;">
+                {{ job.description }}
+              </p>
+            {% endif %}
+          </div>
+
+        </div>
       </div>
     {% empty %}
-      <div class="alert alert-light text-center py-5">
-        <h5>No jobs found matching your criteria.</h5>
-        <p class="text-muted">Try searching with different keywords or clearing location filters.</p>
+      <div class="alert alert-light text-center py-5 border rounded-3">
+        <i class="bi bi-search text-muted fs-1 d-block mb-3"></i>
+        <h5 class="fw-bold text-dark">No jobs found matching your criteria.</h5>
+        <p class="text-muted mb-0">Try searching with different keywords or clearing location filters.</p>
       </div>
     {% endfor %}
   </div>

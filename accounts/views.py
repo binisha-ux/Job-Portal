@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
-from jobs.models import Job, UserProfile
+from jobs.models import Job
 # Create your views here.
 
 def home(request):
@@ -73,7 +73,7 @@ def employer_signup(request):
 
         user = User.objects.create_user(username=email, email=email, password=password)
         login(request, user , backend='django.contrib.auth.backends.ModelBackend')
-        return redirect('jobportal')
+        return redirect('create_job')
 
     return render(request, "employer_signup.html")
 
