@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if messages %}
+    <div class="mb-4">
+      {% for message in messages %}
+        <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags == 'warning' %}warning{% else %}success{% endif %} alert-dismissible fade show shadow-sm rounded-3" role="alert">
+          <i class="bi bi-info-circle me-2"></i>
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </div>
+{% endif %}
+
+<main class="container my-5" style="max-width: 700px;">
+  
+  <a href="{% url 'search_jobs' %}" class="text-decoration-none text-muted mb-3 d-inline-block">
+    <i class="bi bi-arrow-left me-1"></i> Back to Jobs
+  </a>
+
+  <div class="card border-0 shadow-sm rounded-3 p-4 p-md-5">
+    <div class="mb-4">
+      <h2 class="h3 fw-bold text-dark">Apply for {{ job.title }}</h2>
+      <p class="text-muted mb-0"><i class="bi bi-building me-1"></i>{{ job.company_name }} — {{ job.location }}</p>
+    </div>
+
+    <form action="{% url 'apply_for_job' job.id %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+      <div class="row g-3">
+        <!-- Full Name -->
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Full Name <span class="text-danger">*</span></label>
+          <input type="text" name="full_name" class="form-control" placeholder="John Doe" required>
+        </div>
+
+        <!-- Email Address -->
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Email Address <span class="text-danger">*</span></label>
+          <input type="email" name="email" class="form-control" placeholder="name@example.com" required>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Phone Number <span class="text-danger">*</span></label>
+          <input type="tel" name="phone" class="form-control" placeholder="+1 (555) 000-0000" required>
+        </div>
+
+        <!-- Portfolio / LinkedIn URL -->
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small">Portfolio or LinkedIn URL <span class="text-muted">(Optional)</span></label>
+          <input type="url" name="portfolio_url" class="form-control" placeholder="https://linkedin.com/in/username">
+        </div>
+
+        <!-- Resume Upload -->
+        <div class="col-12">
+          <label class="form-label fw-semibold small">Upload Resume/CV <span class="text-danger">*</span></label>
+          <input type="file" name="resume" class="form-control" accept=".pdf,.doc,.docx" required>
+          <div class="form-text">Accepted formats: PDF, DOC, DOCX</div>
+        </div>
+
+        <!-- Cover Letter -->
+        <div class="col-12">
+          <label class="form-label fw-semibold small">Cover Letter / Message <span class="text-muted">(Optional)</span></label>
+          <textarea name="cover_letter" class="form-control" rows="4" placeholder="Briefly describe why you are a great fit..."></textarea>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end gap-2 mt-4">
+        <a href="{% url 'search_jobs' %}" class="btn btn-light rounded-pill px-4">Cancel</a>
+        <button type="submit" class="btn btn-primary rounded-pill px-4 fw-semibold">Submit Application</button>
+      </div>
+    </form>
+  </div>
+</main>
+{% endblock %}
