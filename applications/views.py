@@ -37,7 +37,7 @@ def apply_for_job(request, job_id):
 
     return render(request, "my_applications.html", {'job':job})
 
-def view_application(request, job_id):
+def view_applications(request, job_id):
     job = get_object_or_404(Job, id=job_id, employer=request.user)
 
     applications = Application.objects.filter(job=job).order_by("-submitted_at")

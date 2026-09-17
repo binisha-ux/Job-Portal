@@ -19,7 +19,7 @@ from django.urls import path, include
 from accounts.views import home , sign_in,  sign_up
 from accounts.views import employer_signup, employer_home, employer_signin, search_jobs, feed
 from jobs.views import create_job, delete_job, update_job
-from applications.views import apply_for_job
+from applications.views import apply_for_job, view_applications
 
 
 urlpatterns = [
@@ -37,6 +37,7 @@ urlpatterns = [
     path('searchjobs/', search_jobs, name="search_jobs"),
     path('feed/', feed, name="feed"),
     path('applyforjob/<int:job_id>/', apply_for_job, name="apply_for_job"),
+    path('view_applications/<int:job_id>/', view_applications, name="view_applications"),
 
 
 
