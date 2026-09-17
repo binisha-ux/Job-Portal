@@ -12,8 +12,6 @@ def home(request):
     return render(request, "index.html", context)
 
 def sign_up(request):
-    if request.user.is_authenticated:
-        return redirect("feed")
 
     if request.method == "POST":
         data = request.POST
@@ -35,7 +33,7 @@ def sign_up(request):
 
 def sign_in(request):
     if request.user.is_authenticated:
-        return redirect("feed")
+        return redirect("create_job")
 
     if request.method == "POST":
         data = request.POST
@@ -59,7 +57,7 @@ def sign_in(request):
 
 def employer_signup(request):
     if request.user.is_authenticated:
-        return redirect("employer_home")
+        return redirect("create_job")
 
     if request.method == "POST":
         data = request.POST
