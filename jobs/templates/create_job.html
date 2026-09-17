@@ -108,8 +108,9 @@
                                             <form action="{% url 'delete_job' job.id %}" method="POST">
                                             {% csrf_token %}
                                                 <button type="submit" class="btn btn-danger btn-sm fw-bold">Delete</button>
+                                                <a href="{% url 'view_applications' job.id %}" class="btn btn-success btn-sm fw-bold">View Applications</a>
+
                                             </form>
-                                            <a href="" class="btn btn-success btn-sm fw-bold">View Applications</a>
                                     </div>
                                 </div>
                             </div>
