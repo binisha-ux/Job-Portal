@@ -20,6 +20,8 @@ from accounts.views import home , sign_in,  sign_up
 from accounts.views import employer_signup, employer_home, employer_signin, search_jobs, feed
 from jobs.views import create_job, delete_job, update_job
 from applications.views import apply_for_job, view_applications
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
@@ -39,12 +41,17 @@ urlpatterns = [
     path('applyforjob/<int:job_id>/', apply_for_job, name="apply_for_job"),
     path('view_applications/<int:job_id>/', view_applications, name="view_applications"),
 
-
-
-
-
-
-
-    
-    
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+
+
+
+
+    
+    
+

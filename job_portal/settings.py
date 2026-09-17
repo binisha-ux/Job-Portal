@@ -161,3 +161,9 @@ MAILERS = {
 }
 
 Auth_USER_MODEL = 'jobs.User'
+
+import os 
+
+MEDIA_URL = '/resumes/'
+
+MEDIA_ROUTES = os.path.join(BASE_DIR, 'media')
