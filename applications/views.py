@@ -5,6 +5,7 @@ from .models import Application
 from django.contrib import messages 
 
 # Create your views here.
+@login_required(login_url='signup')  # Replace 'login' with your login route name
 def apply_for_job(request, job_id):
     job = get_object_or_404(Job, id=job_id)
     
@@ -20,7 +21,7 @@ def apply_for_job(request, job_id):
 
         if Application.objects.filter(job=job, candidate=request.user).exists():
             messages.warning(request, "You have already applied for this job.")
-            return redirect("search_jobs")
+            return render(request, "my_applications.html", {'job':job})
 
 
         Application.objects.create(
