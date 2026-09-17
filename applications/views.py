@@ -42,10 +42,10 @@ def view_applications(request, job_id):
 
     applications = Application.objects.filter(job=job).order_by("-applied_at")
 
-    return render(request, "view_applications.html", 
-    {'job':job},
-    {'applications':applications
-    })
+    context = {'job':job, 'applications':applications}
+
+    return render(request, "view_applications.html", context)
+ 
 
 
 

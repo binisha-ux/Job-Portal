@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<main class="container my-5" style="max-width: 900px;">
+  <!-- Back Button -->
+  <a href="{% url 'create_job' %}" class="text-decoration-none text-muted mb-3 d-inline-block">
+    <i class="bi bi-arrow-left me-1"></i> Back to JobPortal
+  </a>
+
+  <!-- Header Card -->
+  <div class="card border-0 shadow-sm rounded-3 p-4 mb-4">
+    <h2 class="h3 fw-bold text-dark mb-1">Applications for Senior Software Engineer</h2>
+    <p class="text-muted mb-0">Total Applicants: 2</p>
+  </div>
+
+  <!-- Applications List Container -->
+  <div class="row g-3">
+    
+    <!-- Application Card 1 -->
+    <div class="col-12">
+      <div class="card border-0 shadow-sm rounded-3 p-3">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <h5 class="fw-bold mb-1">Jane Doe</h5>
+            <p class="text-muted small mb-2">
+              <i class="bi bi-envelope me-1"></i>jane.doe@example.com | 
+              <i class="bi bi-telephone me-1"></i>+1 (555) 019-2834
+            </p>
+          </div>
+          <a href="#" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill">
+            <i class="bi bi-file-earmark-arrow-down me-1"></i> Download Resume
+          </a>
+        </div>
+
+        <div class="mb-2">
+          <a href="https://linkedin.com" target="_blank" class="small text-decoration-none">
+            <i class="bi bi-link-45deg me-1"></i>Portfolio/LinkedIn
+          </a>
+        </div>
+
+        <div class="bg-light p-3 rounded-3 mt-2">
+          <strong class="small text-muted d-block mb-1">Cover Letter:</strong>
+          <p class="small mb-0 text-secondary" style="white-space: pre-line;">
+            I have over 4 years of backend development experience using Python and JavaScript. I am very interested in this role and excited about the prospect of contributing to your core platform.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Application Card 2 -->
+    <div class="col-12">
+      <div class="card border-0 shadow-sm rounded-3 p-3">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <h5 class="fw-bold mb-1">John Smith</h5>
+            <p class="text-muted small mb-2">
+              <i class="bi bi-envelope me-1"></i>john.smith@example.com | 
+              <i class="bi bi-telephone me-1"></i>+1 (555) 012-3456
+            </p>
+          </div>
+          <a href="#" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill">
+            <i class="bi bi-file-earmark-arrow-down me-1"></i> Download Resume
+          </a>
+        </div>
+
+        <div class="mb-2">
+          <a href="https://github.com" target="_blank" class="small text-decoration-none">
+            <i class="bi bi-link-45deg me-1"></i>Portfolio/LinkedIn
+          </a>
+        </div>
+
+        <div class="bg-light p-3 rounded-3 mt-2">
+          <strong class="small text-muted d-block mb-1">Cover Letter:</strong>
+          <p class="small mb-0 text-secondary" style="white-space: pre-line;">
+            Please consider my application for the software engineering position. My resume outlines my full employment history and relevant project work.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Empty State UI (Display when there are no applications) -->
+  <div class="card border-0 shadow-sm rounded-3 p-5 text-center mt-4">
+    <i class="bi bi-inbox text-muted display-4 mb-3"></i>
+    <h5 class="text-muted">No applications submitted yet.</h5>
+  </div>
+</main>
+
+{% endblock %}
